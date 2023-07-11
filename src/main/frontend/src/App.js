@@ -1,20 +1,30 @@
-import {useEffect} from "react";
-import {useState} from "react";
+import { Routes, Route} from 'react-router-dom';
+import Home from './pages/Home.js';
+import SignIn from './pages/SignIn.js';
+import Error from './pages/Error.js';
+import styled from "styled-components";
+import SignUp from './pages/SignUp.js';
+
+const Global = styled.div`
+
+  display: flex;
+  justify-content: center;
+  width:100%;
+  height:100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f8fafc;
+`
 
 function App() {
-  const [test, setTest] = useState("");
-
-
-  useEffect(() => {
-    fetch('/api/member/sign')
-    .then((res) => res.json())
-    .then((data) => setTest(data));
-  },[]);
-  
   return (
-    <div className="App">
-      {test}
-    </div>
+    <Global>
+        <Routes>
+          <Route path="/" exact={true} element={<Home/>}/>
+          <Route path="/signin" element={<SignIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+          <Route path="*" element={<Error/>}/>
+        </Routes>
+    </Global>
   );
 }
 
