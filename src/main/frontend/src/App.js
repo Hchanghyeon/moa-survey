@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn.js';
 import Error from './pages/Error.js';
 import styled from "styled-components";
 import SignUp from './pages/SignUp.js';
+import { useEffect, useState} from 'react';
 
 const Global = styled.div`
 
@@ -16,6 +17,7 @@ const Global = styled.div`
 `
 
 function App() {
+
   return (
     <Global>
         <Routes>

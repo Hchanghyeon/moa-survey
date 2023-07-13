@@ -1,11 +1,13 @@
-package com.moa.survey.member.domain.entity;
+package com.moa.survey.member.domain;
 
+import com.moa.survey.question.domain.Question;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.OneToMany;
+import java.util.List;
 import lombok.Builder;
 
 @Entity
@@ -13,39 +15,35 @@ public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "member_id")
+    private Long memberId;
 
     @Column(nullable = false, length = 50, unique = true)
-    @NotNull
     private String email;
 
     @Column(nullable = false, length = 50)
-    @NotNull
     private String password;
 
     @Column(nullable = false, length = 10)
-    @NotNull
     private String gender;
 
     @Column(nullable = false, length = 10)
-    @NotNull
     private int ageGroup;
 
     @Column(nullable = false, length = 10)
-    @NotNull
     private String mbti;
 
     @Column(nullable = false, length = 5)
-    @NotNull
     private String bloodType;
 
     @Column(nullable = false, length = 5)
-    @NotNull
     private String department;
 
     @Column(nullable = false, length = 10)
-    @NotNull
     private String job;
+
+    @OneToMany(mappedBy = "member")
+    private List<Question> questionList;
 
     @Builder
     public Member(String email, String password, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
@@ -58,4 +56,5 @@ public class Member {
         this.department = department;
         this.job = job;
     }
+    
 }
