@@ -8,9 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id
@@ -46,7 +49,7 @@ public class Member {
     private List<Question> questionList;
 
     @Builder
-    public Member(String email, String password, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
+    private Member(String email, String password, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
         this.email = email;
         this.password = password;
         this.gender = gender;
@@ -56,5 +59,5 @@ public class Member {
         this.department = department;
         this.job = job;
     }
-    
+
 }

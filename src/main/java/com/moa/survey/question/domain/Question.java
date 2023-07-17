@@ -1,6 +1,6 @@
 package com.moa.survey.question.domain;
 
-import com.moa.survey.answer.domain.Answer;
+import com.moa.survey.item.domain.Item;
 import com.moa.survey.member.domain.Member;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,9 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Question {
 
     @Id
@@ -25,18 +28,18 @@ public class Question {
     private String title;
 
     @OneToMany(mappedBy = "question")
-    private List<Answer> answerList;
+    private List<Item> itemList;
 
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
     @Builder
-    public Question(Long questionId, String title, List<Answer> answerList, Member member) {
+    private Question(Long questionId, String title, List<Item> itemList, Member member) {
         this.questionId = questionId;
         this.title = title;
-        this.answerList = answerList;
+        this.itemList = itemList;
         this.member = member;
     }
-    
+
 }
