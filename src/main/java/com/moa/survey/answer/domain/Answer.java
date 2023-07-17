@@ -21,11 +21,11 @@ public class Answer {
     private Long answerId;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false, unique = true)
     private Member member;
 
     @ManyToOne
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
     @Builder
