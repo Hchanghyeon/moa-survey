@@ -1,10 +1,9 @@
-package com.moa.survey.member.dto;
+package com.moa.survey.member.dto.response;
 
 import com.moa.survey.member.domain.Member;
 import com.moa.survey.question.domain.Question;
-import lombok.Getter;
-
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class MemberResponse {
@@ -14,7 +13,7 @@ public class MemberResponse {
     private String password;
     private String nickname;
     private String gender;
-    private int ageGroup;
+    private Integer ageGroup;
     private String mbti;
     private String bloodType;
     private String department;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
+import SignInForm from "../components/SignInForm"
 
 const SignInContainer = styled.div`
     width:100%;
@@ -12,28 +13,10 @@ const SignInContainer = styled.div`
 `
 
 const SignIn = () => {
-
-    const [text, setText] = useState("");
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/member/sign", { method: "GET" })
-          .then((res) => res.json())
-          .then((data) => {
-            setText(data);
-            console.log(data);
-          })
-          .catch((error) => {
-            console.error("Error fetching data: ", error);
-          });
-      }, []);
-
-
     return (
         <SignInContainer>
             <Header/>
-                <div>
-                    {text}
-                </div>
+            <SignInForm/>
         </SignInContainer>
     )
 }

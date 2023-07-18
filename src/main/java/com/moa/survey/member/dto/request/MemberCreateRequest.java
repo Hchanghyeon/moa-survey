@@ -1,4 +1,4 @@
-package com.moa.survey.member.dto;
+package com.moa.survey.member.dto.request;
 
 import com.moa.survey.member.domain.Member;
 import lombok.Builder;

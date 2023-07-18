@@ -1,8 +1,8 @@
 package com.moa.survey.member.application;
 
 import com.moa.survey.member.domain.Member;
-import com.moa.survey.member.dto.MemberCreateRequest;
-import com.moa.survey.member.dto.MemberResponse;
+import com.moa.survey.member.dto.request.MemberCreateRequest;
+import com.moa.survey.member.dto.response.MemberResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +14,22 @@ public class MemberService {
 
     public MemberResponse create(MemberCreateRequest memberCreateRequest) {
 
-        memberRepository.findByEmail(memberCreateRequest.getEmail())
-                .ifPresent(item -> {
-                    throw new RuntimeException("이미 있는 계정입니다.");
-                });
+        boolean result = memberRepository.existsByEmail(memberCreateRequest.getEmail());
+
+        if (result) {
+            throw new RuntimeException("이미 있는 계정입니다.");
+        }
 
         Member member = memberRepository.save(memberCreateRequest.toMember());
 
         return new MemberResponse(member);
     }
-    
+
+    public MemberResponse findByEmail(String email) {
+
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("찾는 유저가 회원가입이 되어있지 않습니다."));
+
+        return new MemberResponse(member);
+    }
 }

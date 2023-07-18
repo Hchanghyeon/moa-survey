@@ -14,3 +14,7 @@ spring:
   sql:
     init:
       mode: always
+jwt:
+  header: Authorization
+
+  token-validity-in-seconds: 86400
