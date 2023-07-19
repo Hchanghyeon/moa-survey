@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import { Login } from "@mui/icons-material";
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
@@ -11,6 +11,7 @@ const HeaderContainer = styled.div`
     border-bottom-color: silver;
     padding:0px 10px;
     background-color: white;
+    margin-bottom:20px;
 `
 
 const HeaderBox = styled.div`
@@ -65,6 +66,20 @@ const ToolTipBox = styled.div`
 `
 
 const Header = () => {
+
+    const [logState, setLogState] = useState();
+    const [logName, setLogName] = useState();
+
+    useEffect(() => {
+      setLogState(localStorage.getItem("token"));
+      setLogName(localStorage.getItem("name"));
+    },[]);
+
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    }
+
     return (
         <HeaderContainer>
             <HeaderBox>
@@ -72,11 +87,22 @@ const Header = () => {
                     <Link to="/" className="link"><Logo>MoaSurvey</Logo></Link>
                 </LogoBox>
                 <ToolTipBox>
-                    <Link to="/signin" className="link" ><Login className="login"/></Link>
-                    <Link to="/signup" className="link" ><AssignmentIndIcon className="signup"/></Link>
+                { logState === null 
+                    ?
+                     <div>
+                        <Link to="/signin" className="link" ><Login className="login"/></Link>
+                        <Link to="/signup" className="link" ><AssignmentIndIcon className="signup"/></Link>
+                    </div>
+                    : 
+                    <div>
+                        {logName}님 안녕하세요
+                        <button onClick={logout}>로그아웃</button>
+                    </div>
+                }
                 </ToolTipBox>
             </HeaderBox>
         </HeaderContainer>
+        
     )
 }
 export default Header;

@@ -1,6 +1,7 @@
 package com.moa.survey.member.api;
 
 import com.moa.survey.member.application.MemberService;
+import com.moa.survey.member.auth.TokenResponse;
 import com.moa.survey.member.dto.request.MemberCreateRequest;
 import com.moa.survey.member.dto.request.MemberLoginRequest;
 import com.moa.survey.member.dto.response.MemberResponse;
@@ -25,10 +26,11 @@ public class MemberController {
     }
 
     @PostMapping("/auth")
-    public ResponseEntity<MemberResponse> login(@RequestBody MemberLoginRequest memberLoginRequest) {
-        MemberResponse memberResponse = memberService.findByEmail(memberLoginRequest.getEmail());
+    public ResponseEntity<TokenResponse> login(@RequestBody MemberLoginRequest memberLoginRequest) {
 
-        return ResponseEntity.ok(memberResponse);
+        TokenResponse tokenResponse = memberService.login(memberLoginRequest);
+
+        return ResponseEntity.ok(tokenResponse);
     }
 
 }

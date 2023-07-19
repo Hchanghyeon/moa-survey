@@ -7,7 +7,7 @@ create table member
 (
     member_id  bigint auto_increment primary key,
     email      varchar(50) not null,
-    password   varchar(50) not null,
+    password   varchar(100) not null,
     nickname   varchar(30) not null,
     gender     varchar(10) not null,
     age_group  int         not null,

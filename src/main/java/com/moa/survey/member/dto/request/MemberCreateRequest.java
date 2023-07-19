@@ -1,6 +1,7 @@
 package com.moa.survey.member.dto.request;
 
 import com.moa.survey.member.domain.Member;
+import com.moa.survey.member.util.EncryptionUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,7 +36,7 @@ public class MemberCreateRequest {
     public Member toMember() {
         return Member.builder()
                 .email(email)
-                .password(password)
+                .password(EncryptionUtil.hashPassword(password))
                 .nickname(nickname)
                 .gender(gender)
                 .ageGroup(ageGroup)
