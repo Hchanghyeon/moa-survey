@@ -19,19 +19,20 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
     }
 
     @Override
-    public boolean preHandle(HttpServletRequest request,
-            HttpServletResponse response, Object handler) {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         String token = authExtractor.extract(request, "Bearer");
+
         if (StringUtils.isEmpty(token)) {
             return true;
         }
 
         if (!tokenProvider.validateToken(token)) {
-            throw new IllegalArgumentException("유효하지 않은 토큰");
+            throw new IllegalArgumentException("유효하지 않은 토큰압니다.");
         }
 
-        String name = tokenProvider.getSubject(token);
-        request.setAttribute("name", name);
+        String email = tokenProvider.getSubject(token);
+        request.setAttribute("email", email);
+        
         return true;
     }
 }

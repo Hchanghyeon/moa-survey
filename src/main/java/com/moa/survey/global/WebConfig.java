@@ -22,8 +22,11 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(bearerAuthInterceptor).addPathPatterns("/question");
+        registry.addInterceptor(bearerAuthInterceptor)
+                .addPathPatterns("/api/questions")
+                .addPathPatterns("/api/member/auth");
     }
 
 }

@@ -4,6 +4,7 @@ import com.moa.survey.item.domain.Item;
 import com.moa.survey.member.domain.Member;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,9 +14,11 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Question {
 
@@ -28,18 +31,23 @@ public class Question {
     private String title;
 
     @OneToMany(mappedBy = "question")
-    private List<Item> itemList;
+    private List<Item> items;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
     @Builder
-    private Question(Long questionId, String title, List<Item> itemList, Member member) {
+    private Question(Long questionId, String title, List<Item> items, Member member) {
         this.questionId = questionId;
         this.title = title;
-        this.itemList = itemList;
+        this.items = items;
         this.member = member;
     }
 
+    public Question(String title, Member member) {
+        this.title = title;
+        this.member = member;
+    }
+    
 }

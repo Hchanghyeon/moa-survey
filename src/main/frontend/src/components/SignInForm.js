@@ -44,18 +44,20 @@ const SignInForm = () => {
             })
         })
             .then(response => response.json())
-            .then(token => {
-                if(token !== null){
-                    localStorage.setItem("token", token.accessToken);
-                    localStorage.setItem("name", token.nickname);
-                    alert("로그인 되었습니다.");
-                    window.location.href = "/";
-                } else {
-                    alert("잘못된 입력 값 입니다.");
+            .then(data => {
+                console.log(data);
+
+                if (data.status === 500) {
+                    alert("로그인에 실패하셨습니다. 다시 한 번 확인해주세요.");
+                    return;
                 }
 
+                localStorage.setItem("token", data.accessToken);
+                localStorage.setItem("name", data.nickname);
+                alert("로그인 되었습니다.");
+                window.location.href = "/";
+
             })
-            .catch(error => alert(error));
     }
 
     return (
