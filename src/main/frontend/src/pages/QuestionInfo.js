@@ -1,4 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react"
+
+import Header from "../components/Header"
+import { useLocation, useParams } from "react-router-dom"
+import Survey from "../components/Survey"
 import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -7,32 +11,61 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { styled as styledComponent } from 'styled-components';
 
+
+const QuestionContainer = styledComponent.div`
+    width:100%;
+    height:100%;
+    padding:0px 10px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+`
+
 // Inspired by blueprintjs
 function BpRadio(props) {
 
-  return (
-    <Radio
-      disableRipple
-      color="default"
-      checkedIcon={<BpCheckedIcon />}
-      icon={<BpIcon />}
-      {...props}
-    />
-  );
-}
+    return (
+      <Radio
+        disableRipple
+        color="default"
+        checkedIcon={<BpCheckedIcon />}
+        icon={<BpIcon />}
+        {...props}
+      />
+    );
+  }
+  
 
-export default function Survey({ question }) {
+const QuestionInfo = () => {
+    const [question, setQuestion] = useState({});
+    const [items, setItems] = useState([]);
+    const questionId = useParams();
+    const [value, setValue] = useState();
 
-  const [value, setValue] = useState();
+    const handleChange = (event) => {
+      setValue(event.target.value);
+    };
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+    const getQuestion = async () => {
+        await fetch(`http://localhost:8080/api/questions/${questionId.id}`, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+                setQuestion(data);
+                setItems(data.items);
+            })
+    }
+
+    useEffect(() => {
+        getQuestion();
+    }, [])
 
 
-  return (
-    <FormContainer>
-      <Form>
+    return (
+        <QuestionContainer>
+            <Header />
+            <Form>
         <FormControl>
           <FormLabel id="demo-customized-radios" className='header'>{question.title}</FormLabel>
           <RadioGroup
@@ -44,8 +77,8 @@ export default function Survey({ question }) {
           >
     
             {
-              question.items && question.items.map((item, i) => {
-                return  <FormControlLabel key={i} className="surveyAnswer" value={item.itemId} control={<BpRadio />} />
+              items && items.map((item, i) => {
+                return  <FormControlLabel key={i} className="surveyAnswer" value={(i+1) + '. ' + item.text} control={<BpRadio />} label={(i+1)+ '. '+ item.text} />
               })
             }
           </RadioGroup>
@@ -54,10 +87,11 @@ export default function Survey({ question }) {
           <span>작성자</span><b> {question.memberNickname}</b>
         </FormWriter>
       </Form>
-    </FormContainer>
-  );
+        </QuestionContainer>
+    )
 }
 
+export default QuestionInfo;
 
 const Form = styledComponent.div`
     margin-top:20px;

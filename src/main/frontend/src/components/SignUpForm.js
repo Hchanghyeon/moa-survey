@@ -29,6 +29,7 @@ const SignUpForm = () => {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
+    
     const handleNicknameChange = (event) => {
         setNickname(event.target.value);
     };

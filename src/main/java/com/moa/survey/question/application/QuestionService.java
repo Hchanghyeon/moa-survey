@@ -39,10 +39,17 @@ public class QuestionService {
 
     public List<QuestionResponse> findAll() {
         List<Question> questions = questionRepository.findAll();
-        
+
         return questions.stream()
                 .map(QuestionResponse::new)
                 .toList();
     }
 
+    public QuestionResponse findById(Long questionId) {
+        Question question = questionRepository.findById(questionId)
+                .orElseThrow(() -> new NoSuchElementException("찾는 질문이 없습니다."));
+
+        return new QuestionResponse(question);
+    }
+    
 }

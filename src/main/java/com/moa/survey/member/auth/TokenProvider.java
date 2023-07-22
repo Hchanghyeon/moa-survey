@@ -50,9 +50,11 @@ public class TokenProvider {
             if (claims.getBody().getExpiration().before(new Date())) {
                 return false;
             }
+
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
     }
+    
 }

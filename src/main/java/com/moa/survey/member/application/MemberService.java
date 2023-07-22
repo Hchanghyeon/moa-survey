@@ -21,7 +21,6 @@ public class MemberService {
     private final TokenProvider tokenProvider;
 
     public MemberResponse create(MemberCreateRequest memberCreateRequest) {
-
         boolean result = memberRepository.existsByEmail(memberCreateRequest.getEmail());
 
         if (result) {
@@ -34,12 +33,10 @@ public class MemberService {
     }
 
     public TokenResponse login(MemberLoginRequest memberLoginRequest) {
-
         Member member = memberRepository.findByEmail(memberLoginRequest.getEmail())
                 .orElseThrow(() -> new NoSuchElementException("로그인하려는 계정이 존재하지 않습니다."));
 
         if (EncryptionUtil.checkPassword(memberLoginRequest.getPassword(), member.getPassword())) {
-
             String token = tokenProvider.createToken(member.getEmail());
 
             return new TokenResponse(token, member.getNickname());
@@ -47,4 +44,5 @@ public class MemberService {
 
         throw new IllegalArgumentException("입력된 값은 잘못된 입력 값입니다. 아이디와 패스워드를 다시 한 번 확인해주세요.");
     }
+    
 }

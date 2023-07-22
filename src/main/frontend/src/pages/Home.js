@@ -22,7 +22,6 @@ const QuestionFormContainer = styled.div`
 `
 export const AppContext = createContext();
 
-
 const Home = () => {
 
     const [flag, setFlag] = useState(false);
@@ -38,7 +37,6 @@ const Home = () => {
                 <QuestionFormContainer>
                     <QuestionForm />
                 </QuestionFormContainer>
-                <Survey />
                 <Questions />
             </HomeContainer>
         </AppContext.Provider>

@@ -33,4 +33,5 @@ public class MemberResponse {
         this.job = member.getJob();
         this.questionList = member.getQuestionList();
     }
+    
 }

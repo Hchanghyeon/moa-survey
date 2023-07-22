@@ -22,12 +22,12 @@ public class MemberController {
     @PostMapping
     public ResponseEntity<MemberResponse> create(@RequestBody MemberCreateRequest memberCreateRequest) {
         MemberResponse memberResponse = memberService.create(memberCreateRequest);
+
         return ResponseEntity.ok(memberResponse);
     }
 
     @PostMapping("/auth")
     public ResponseEntity<TokenResponse> login(@RequestBody MemberLoginRequest memberLoginRequest) {
-
         TokenResponse tokenResponse = memberService.login(memberLoginRequest);
 
         return ResponseEntity.ok(tokenResponse);

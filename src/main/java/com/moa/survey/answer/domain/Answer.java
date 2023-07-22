@@ -34,4 +34,5 @@ public class Answer {
         this.member = member;
         this.item = item;
     }
+    
 }

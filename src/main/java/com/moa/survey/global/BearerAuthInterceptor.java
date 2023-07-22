@@ -32,7 +32,8 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
 
         String email = tokenProvider.getSubject(token);
         request.setAttribute("email", email);
-        
+
         return true;
     }
+    
 }

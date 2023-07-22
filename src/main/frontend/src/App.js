@@ -4,6 +4,7 @@ import SignIn from './pages/SignIn.js';
 import Error from './pages/Error.js';
 import styled from "styled-components";
 import SignUp from './pages/SignUp.js';
+import QuestionInfo from "./pages/QuestionInfo.js";
 
 const Global = styled.div`
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" exact={true} element={<Home/>}/>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp/>}/>
+          <Route path="/question/:id" element={<QuestionInfo/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
     </Global>

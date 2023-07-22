@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,19 +23,23 @@ public class QuestionController {
 
     @GetMapping
     public ResponseEntity<List<QuestionResponse>> findAll() {
-
         List<QuestionResponse> questionsResponse = questionService.findAll();
 
         return ResponseEntity.ok(questionsResponse);
     }
 
-
     @PostMapping
     public ResponseEntity<Long> create(@RequestBody QuestionCreateRequest questionCreateRequest, @RequestAttribute String email) {
-
         Long questionIdResponse = questionService.create(questionCreateRequest, email);
 
         return ResponseEntity.ok(questionIdResponse);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<QuestionResponse> find(@PathVariable("id") Long questionId) {
+        QuestionResponse questionsResponse = questionService.findById(questionId);
+
+        return ResponseEntity.ok(questionsResponse);
+    }
+    
 }
