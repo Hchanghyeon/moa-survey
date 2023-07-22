@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 
 import Header from "../components/Header"
 import { useLocation, useParams } from "react-router-dom"
-import Survey from "../components/Survey"
 import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

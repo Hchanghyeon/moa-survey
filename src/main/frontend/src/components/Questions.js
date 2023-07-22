@@ -24,13 +24,14 @@ const Questions = () => {
     const [questions, setQuestions] = useState([]);
     const { flag, changeFlag } = useContext(AppContext);
 
-    const getQuestions =  () => {
-         fetch('http://localhost:8080/api/questions', {
+    const getQuestions = () => {
+        fetch('http://localhost:8080/api/questions', {
             method: 'GET',
         })
             .then(response => response.json())
             .then(data => {
                 setQuestions(data);
+                changeFlag(!flag);
             })
     }
 
@@ -64,7 +65,7 @@ const Questions = () => {
                                 <TableCell align="right"><Link to={url}>{row.title}</Link></TableCell>
                                 <TableCell align="right">{row.memberNickname}</TableCell>
                             </TableRow>
-})}
+                        })}
                     </TableBody>
                 </Table>
             </TableContainer>

@@ -1,6 +1,5 @@
 import React, { useState, createContext } from "react";
 import Header from "../components/Header";
-import Survey from "../components/Survey";
 import styled from "styled-components";
 import QuestionForm from "../components/QuestionForm";
 import Questions from "../components/Questions";

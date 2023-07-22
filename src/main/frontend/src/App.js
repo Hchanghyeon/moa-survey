@@ -5,6 +5,7 @@ import Error from './pages/Error.js';
 import styled from "styled-components";
 import SignUp from './pages/SignUp.js';
 import QuestionInfo from "./pages/QuestionInfo.js";
+import {AuthProvider} from "./components/AuthProvider.js";
 
 const Global = styled.div`
 
@@ -18,6 +19,7 @@ const Global = styled.div`
 function App() {
 
   return (
+    <AuthProvider>
     <Global>
         <Routes>
           <Route path="/" exact={true} element={<Home/>}/>
@@ -27,6 +29,7 @@ function App() {
           <Route path="*" element={<Error/>}/>
         </Routes>
     </Global>
+    </AuthProvider>
   );
 }
 

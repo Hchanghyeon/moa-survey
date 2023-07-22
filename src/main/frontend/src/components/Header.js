@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Login } from "@mui/icons-material";
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../components/AuthProvider";
 
 const HeaderContainer = styled.div`
     width:100%;
@@ -67,18 +69,12 @@ const ToolTipBox = styled.div`
 
 const Header = () => {
 
-    const [logState, setLogState] = useState();
-    const [logName, setLogName] = useState();
-
-    useEffect(() => {
-      setLogState(localStorage.getItem("token"));
-      setLogName(localStorage.getItem("name"));
-    },[]);
+    const { authInfo, updateAuthInfo } = useContext(AuthContext);
 
     const logout = () => {
-        localStorage.clear();
-        window.location.reload();
-    }
+      localStorage.clear();
+      updateAuthInfo();
+    };
 
     return (
         <HeaderContainer>
@@ -87,7 +83,7 @@ const Header = () => {
                     <Link to="/" className="link"><Logo>MoaSurvey</Logo></Link>
                 </LogoBox>
                 <ToolTipBox>
-                { logState === null 
+                { !authInfo.loggedIn 
                     ?
                      <div>
                         <Link to="/signin" className="link" ><Login className="login"/></Link>
@@ -95,7 +91,7 @@ const Header = () => {
                     </div>
                     : 
                     <div>
-                        {logName}님 안녕하세요
+                        {authInfo.userName}님 안녕하세요
                         <button onClick={logout}>로그아웃</button>
                     </div>
                 }
