@@ -12,6 +12,7 @@ import java.util.NoSuchElementException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final TokenProvider tokenProvider;
 
+    @Transactional
     public MemberResponse create(MemberCreateRequest memberCreateRequest) {
         boolean result = memberRepository.existsByEmail(memberCreateRequest.getEmail());
 
@@ -32,6 +34,7 @@ public class MemberService {
         return new MemberResponse(member);
     }
 
+    @Transactional(readOnly = true)
     public TokenResponse login(MemberLoginRequest memberLoginRequest) {
         Member member = memberRepository.findByEmail(memberLoginRequest.getEmail())
                 .orElseThrow(() -> new NoSuchElementException("로그인하려는 계정이 존재하지 않습니다."));
@@ -44,5 +47,5 @@ public class MemberService {
 
         throw new IllegalArgumentException("입력된 값은 잘못된 입력 값입니다. 아이디와 패스워드를 다시 한 번 확인해주세요.");
     }
-    
+
 }

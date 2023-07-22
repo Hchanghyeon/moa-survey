@@ -44,10 +44,11 @@ const QuestionForm = () => {
             .then(response => response.json())
             .then(data => { 
                 console.log(data);
+                changeFlag(!flag);
             })
             .catch(error => alert(error));
 
-            changeFlag();
+            
         setOpen(false);
     }
 

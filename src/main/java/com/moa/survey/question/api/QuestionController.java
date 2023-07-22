@@ -1,4 +1,4 @@
-package com.moa.survey.question.controller;
+package com.moa.survey.question.api;
 
 import com.moa.survey.question.application.QuestionService;
 import com.moa.survey.question.dto.request.QuestionCreateRequest;
@@ -41,5 +41,5 @@ public class QuestionController {
 
         return ResponseEntity.ok(questionsResponse);
     }
-    
+
 }

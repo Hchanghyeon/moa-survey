@@ -9,10 +9,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
-import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Answer {
 
@@ -28,11 +29,17 @@ public class Answer {
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    @Builder
-    public Answer(Long answerId, Member member, Item item) {
-        this.answerId = answerId;
+    public Answer(Member member, Item item) {
         this.member = member;
         this.item = item;
     }
-    
+
+    public void changeMember(Member member) {
+        this.member = member;
+    }
+
+    public void changeItem(Item item) {
+        this.item = item;
+    }
+
 }

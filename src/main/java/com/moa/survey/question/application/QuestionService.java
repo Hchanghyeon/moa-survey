@@ -37,6 +37,7 @@ public class QuestionService {
         return savedQuestion.getQuestionId();
     }
 
+    @Transactional(readOnly = true)
     public List<QuestionResponse> findAll() {
         List<Question> questions = questionRepository.findAll();
 
@@ -45,11 +46,12 @@ public class QuestionService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
     public QuestionResponse findById(Long questionId) {
         Question question = questionRepository.findById(questionId)
                 .orElseThrow(() -> new NoSuchElementException("찾는 질문이 없습니다."));
 
         return new QuestionResponse(question);
     }
-    
+
 }

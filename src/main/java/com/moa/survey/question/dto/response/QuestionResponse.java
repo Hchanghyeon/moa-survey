@@ -13,12 +13,14 @@ public class QuestionResponse {
     private Long questionId;
     private String title;
     private List<Item> items;
+    private Long memberId;
     private String memberNickname;
 
     public QuestionResponse(Question question) {
         this.questionId = question.getQuestionId();
         this.title = question.getTitle();
         this.items = question.getItems();
+        this.memberId = question.getMember().getMemberId();
         this.memberNickname = question.getMember().getNickname();
     }
 
