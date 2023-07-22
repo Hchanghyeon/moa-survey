@@ -60,7 +60,7 @@ const SignUpForm = () => {
 
     const submitInfo =  async () => {
 
-        fetch('http://localhost:8080/api/member',{
+        fetch('http://localhost:8080/api/members',{
             method:'POST',
             headers:{
                 "Content-Type":'application/json; charset=utf-8;' 

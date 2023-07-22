@@ -33,7 +33,7 @@ const SignInForm = () => {
 
     const submitInfo = async () => {
 
-        fetch('http://localhost:8080/api/member/auth', {
+        fetch('http://localhost:8080/api/members/auth', {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json; charset=utf-8;'

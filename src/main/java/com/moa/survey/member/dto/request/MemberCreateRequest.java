@@ -9,11 +9,8 @@ import com.moa.survey.member.domain.enumtype.Job;
 import com.moa.survey.member.domain.enumtype.Mbti;
 import com.moa.survey.member.util.EncryptionUtil;
 import jakarta.validation.constraints.Email;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
 @Getter
 public class MemberCreateRequest {
 
@@ -28,8 +25,7 @@ public class MemberCreateRequest {
     private Department department;
     private Job job;
 
-    @Builder
-    private MemberCreateRequest(String email, String password, String nickname, Gender gender, AgeGroup ageGroup, Mbti mbti, BloodType bloodType, Department department, Job job) {
+    public MemberCreateRequest(String email, String password, String nickname, Gender gender, AgeGroup ageGroup, Mbti mbti, BloodType bloodType, Department department, Job job) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;

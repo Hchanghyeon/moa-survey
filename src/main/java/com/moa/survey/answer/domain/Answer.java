@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -29,7 +30,8 @@ public class Answer {
     @JoinColumn(name = "item_id", nullable = false)
     private Item item;
 
-    public Answer(Member member, Item item) {
+    @Builder
+    private Answer(Member member, Item item) {
         this.member = member;
         this.item = item;
     }

@@ -28,11 +28,20 @@ public class QuestionService {
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new NoSuchElementException("작성하려는 유저의 이메일이 잘못되었습니다."));
 
-        Question newQuestion = new Question(questionCreateRequest.getTitle(), member);
+        Question newQuestion = Question.builder()
+                .title(questionCreateRequest.getTitle())
+                .member(member)
+                .build();
+
         Question savedQuestion = questionRepository.save(newQuestion);
 
         List<String> newItems = questionCreateRequest.getItems();
-        newItems.forEach(item -> itemRepository.save(new Item(item, savedQuestion)));
+        newItems.forEach(item -> itemRepository.save(
+                Item.builder()
+                        .text(item)
+                        .question(savedQuestion)
+                        .build()
+        ));
 
         return savedQuestion.getQuestionId();
     }

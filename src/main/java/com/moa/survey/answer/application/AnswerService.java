@@ -35,7 +35,11 @@ public class AnswerService {
         Optional<Answer> findAnswer = answerRepository.findByMember(member);
 
         if (findAnswer.isEmpty()) {
-            Answer answer = new Answer(member, item);
+            Answer answer = Answer.builder()
+                    .member(member)
+                    .item(item)
+                    .build();
+            
             Answer savedAnswer = answerRepository.save(answer);
 
             return savedAnswer.getAnswerId();

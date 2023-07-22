@@ -43,13 +43,13 @@ const QuestionForm = () => {
         })
             .then(response => response.json())
             .then(data => { 
-                console.log(data);
-                changeFlag(!flag);
+                if(data.code === "BAD_REQUEST"){
+                  alert("글을 작성하려면 로그인해야합니다.");
+                } else {
+                  changeFlag(!flag);
+                  setOpen(false);
+                }
             })
-            .catch(error => alert(error));
-
-            
-        setOpen(false);
     }
 
     const titleHandler = (event) => {

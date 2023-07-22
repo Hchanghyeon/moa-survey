@@ -8,9 +8,7 @@ import com.moa.survey.member.domain.enumtype.Gender;
 import com.moa.survey.member.domain.enumtype.Job;
 import com.moa.survey.member.domain.enumtype.Mbti;
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
 @Getter
 public class AnswerResponse {
 

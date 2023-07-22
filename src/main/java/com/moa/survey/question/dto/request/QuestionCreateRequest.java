@@ -2,9 +2,7 @@ package com.moa.survey.question.dto.request;
 
 import java.util.List;
 import lombok.Getter;
-import lombok.Setter;
 
-@Setter
 @Getter
 public class QuestionCreateRequest {
 
@@ -15,5 +13,5 @@ public class QuestionCreateRequest {
         this.title = title;
         this.items = items;
     }
-    
+
 }

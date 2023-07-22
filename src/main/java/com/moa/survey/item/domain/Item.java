@@ -11,6 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,7 +33,8 @@ public class Item {
     @JsonIgnore
     private Question question;
 
-    public Item(String text, Question question) {
+    @Builder
+    private Item(String text, Question question) {
         this.text = text;
         this.question = question;
     }
