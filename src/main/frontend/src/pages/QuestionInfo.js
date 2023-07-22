@@ -133,27 +133,27 @@ const QuestionInfo = () => {
           },
           {
             "name": "10대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 10).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "TEENS").length
           },
           {
             "name": "20대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 20).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "TWENTIES").length
           },
           {
             "name": "30대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 30).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "THIRTITES").length
           },
           {
             "name": "40대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 40).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "FORTIES").length
           },
           {
             "name": "50대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 50).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "FIFTIES").length
           },
           {
             "name": "60대",
-            "인원수": data.filter((item) => item.memberAgeGroup === 60).length
+            "인원수": data.filter((item) => item.memberAgeGroup === "SIXTIES").length
           },
         ]
         const mbtiGroupDataSet = [
@@ -163,59 +163,67 @@ const QuestionInfo = () => {
           },
           {
             "name": "istj",
-            "인원수": data.filter((item) => item.memberMbti === "istj").length
+            "인원수": data.filter((item) => item.memberMbti === "ISTJ").length
           },
           {
             "name": "istp",
-            "인원수": data.filter((item) => item.memberMbti=== "istp").length
+            "인원수": data.filter((item) => item.memberMbti=== "ISTP").length
           },
           {
             "name": "isfj",
-            "인원수": data.filter((item) => item.memberMbti === "isfj").length
+            "인원수": data.filter((item) => item.memberMbti === "ISFJ").length
           },
           {
             "name": "isfp",
-            "인원수": data.filter((item) => item.memberMbti=== "isfp").length
+            "인원수": data.filter((item) => item.memberMbti=== "ISFP").length
           },
           {
             "name": "infj",
-            "인원수": data.filter((item) => item.memberMbti === "infj").length
+            "인원수": data.filter((item) => item.memberMbti === "INFJ").length
           },
           {
             "name": "infp",
-            "인원수": data.filter((item) => item.memberMbti === "infp").length
+            "인원수": data.filter((item) => item.memberMbti === "INFP").length
+          },
+          {
+            "name": "intj",
+            "인원수": data.filter((item) => item.memberMbti === "INTJ").length
+          },
+          {
+            "name": "intp",
+            "인원수": data.filter((item) => item.memberMbti === "INTP").length
           },
           {
             "name": "estp",
-            "인원수": data.filter((item) => item.memberMbti=== "estp").length
+            "인원수": data.filter((item) => item.memberMbti=== "ESTP").length
           },
           {
             "name": "esfp",
-            "인원수": data.filter((item) => item.memberMbti === "esfp").length
+            "인원수": data.filter((item) => item.memberMbti === "ESFP").length
           },
           {
             "name": "entp",
-            "인원수": data.filter((item) => item.memberMbti=== "entp").length
+            "인원수": data.filter((item) => item.memberMbti=== "ENTP").length
           },
           {
             "name": "enfp",
-            "인원수": data.filter((item) => item.memberMbti === "enfp").length
+            "인원수": data.filter((item) => item.memberMbti === "ENFP").length
           },
           {
             "name": "estj",
-            "인원수": data.filter((item) => item.memberMbti=== "estj").length
+            "인원수": data.filter((item) => item.memberMbti=== "ESTJ").length
           },
           {
             "name": "esfj",
-            "인원수": data.filter((item) => item.memberMbti=== "esfj").length
+            "인원수": data.filter((item) => item.memberMbti=== "ESFJ").length
           },
           {
             "name": "entj",
-            "인원수": data.filter((item) => item.memberMbti=== "entj").length
+            "인원수": data.filter((item) => item.memberMbti=== "ENTJ").length
           },
           {
             "name": "enfj",
-            "인원수": data.filter((item) => item.memberMbti=== "enfj").length
+            "인원수": data.filter((item) => item.memberMbti=== "ENFJ").length
           },
         ]
 
@@ -249,11 +257,11 @@ const QuestionInfo = () => {
           },
           {
             "name": "문과",
-            "인원수": data.filter((item) => item.memberDepartment === "문과").length
+            "인원수": data.filter((item) => item.memberDepartment === "HUMANITIES").length
           },
           {
             "name": "이과",
-            "인원수": data.filter((item) => item.memberDepartment === "이과").length
+            "인원수": data.filter((item) => item.memberDepartment === "SCIENCE").length
           },
         ]
 
@@ -265,15 +273,15 @@ const QuestionInfo = () => {
           },
           {
             "name": "백수",
-            "인원수": data.filter((item) => item.memberJob === "백수").length
+            "인원수": data.filter((item) => item.memberJob === "JOBLESS").length
           },
           {
             "name": "학생",
-            "인원수": data.filter((item) => item.memberJob === "학생").length
+            "인원수": data.filter((item) => item.memberJob === "STUDENT").length
           },
           {
             "name": "직장인",
-            "인원수": data.filter((item) => item.memberJob === "직장인").length
+            "인원수": data.filter((item) => item.memberJob === "EMPLOYEE").length
           },
         ]
 

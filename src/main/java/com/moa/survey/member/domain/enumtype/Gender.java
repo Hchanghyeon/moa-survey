@@ -1,4 +1,4 @@
-package com.moa.survey.member.domain;
+package com.moa.survey.member.domain.enumtype;
 
 import lombok.Getter;
 
@@ -7,5 +7,5 @@ public enum Gender {
 
     MALE,
     FEMALE;
-    
+
 }

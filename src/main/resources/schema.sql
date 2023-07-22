@@ -10,10 +10,10 @@ create table member
     password   varchar(100) not null,
     nickname   varchar(30) not null,
     gender     varchar(10) not null,
-    age_group  int         not null,
+    age_group  varchar(10) not null,
     blood_type varchar(5)  not null,
     mbti       varchar(10) not null,
-    department varchar(5)  not null,
+    department varchar(10)  not null,
     job        varchar(10) not null,
     constraint UK_mbmcqelty0fbrvxp1q58dn57t unique (email)
 );

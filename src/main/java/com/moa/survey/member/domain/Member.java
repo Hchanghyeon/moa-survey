@@ -1,5 +1,11 @@
 package com.moa.survey.member.domain;
 
+import com.moa.survey.member.domain.enumtype.AgeGroup;
+import com.moa.survey.member.domain.enumtype.BloodType;
+import com.moa.survey.member.domain.enumtype.Department;
+import com.moa.survey.member.domain.enumtype.Gender;
+import com.moa.survey.member.domain.enumtype.Job;
+import com.moa.survey.member.domain.enumtype.Mbti;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

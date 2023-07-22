@@ -45,10 +45,8 @@ const SignInForm = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-
-                if (data.status === 500) {
-                    alert("로그인에 실패하셨습니다. 다시 한 번 확인해주세요.");
+                if (data.code === "NOT_FOUND" || data.code === "BAD_REQUEST") {
+                    alert(data.message);
                     return;
                 }
 

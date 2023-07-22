@@ -1,12 +1,12 @@
 package com.moa.survey.member.dto.request;
 
-import com.moa.survey.member.domain.AgeGroup;
-import com.moa.survey.member.domain.BloodType;
-import com.moa.survey.member.domain.Department;
-import com.moa.survey.member.domain.Gender;
-import com.moa.survey.member.domain.Job;
-import com.moa.survey.member.domain.Mbti;
 import com.moa.survey.member.domain.Member;
+import com.moa.survey.member.domain.enumtype.AgeGroup;
+import com.moa.survey.member.domain.enumtype.BloodType;
+import com.moa.survey.member.domain.enumtype.Department;
+import com.moa.survey.member.domain.enumtype.Gender;
+import com.moa.survey.member.domain.enumtype.Job;
+import com.moa.survey.member.domain.enumtype.Mbti;
 import com.moa.survey.member.util.EncryptionUtil;
 import jakarta.validation.constraints.Email;
 import lombok.Builder;

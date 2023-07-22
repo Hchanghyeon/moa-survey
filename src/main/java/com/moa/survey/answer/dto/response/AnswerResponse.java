@@ -1,12 +1,12 @@
 package com.moa.survey.answer.dto.response;
 
 import com.moa.survey.answer.domain.Answer;
-import com.moa.survey.member.domain.AgeGroup;
-import com.moa.survey.member.domain.BloodType;
-import com.moa.survey.member.domain.Department;
-import com.moa.survey.member.domain.Gender;
-import com.moa.survey.member.domain.Job;
-import com.moa.survey.member.domain.Mbti;
+import com.moa.survey.member.domain.enumtype.AgeGroup;
+import com.moa.survey.member.domain.enumtype.BloodType;
+import com.moa.survey.member.domain.enumtype.Department;
+import com.moa.survey.member.domain.enumtype.Gender;
+import com.moa.survey.member.domain.enumtype.Job;
+import com.moa.survey.member.domain.enumtype.Mbti;
 import lombok.Getter;
 import lombok.Setter;
 

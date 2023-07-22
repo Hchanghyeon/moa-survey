@@ -1,4 +1,4 @@
-package com.moa.survey.member.domain;
+package com.moa.survey.member.domain.enumtype;
 
 public enum Mbti {
 
@@ -18,5 +18,5 @@ public enum Mbti {
     ENFP,
     ESTJ,
     ESFJ
-    
+
 }

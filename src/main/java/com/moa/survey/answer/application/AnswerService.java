@@ -47,6 +47,7 @@ public class AnswerService {
         return findAnswer.get().getAnswerId();
     }
 
+    @Transactional(readOnly = true)
     public List<AnswerResponse> findByItemId(Long itemId) {
 
         Item item = itemRepository.findById(itemId)
@@ -58,4 +59,5 @@ public class AnswerService {
                 .map(AnswerResponse::new)
                 .toList();
     }
+    
 }

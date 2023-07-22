@@ -119,12 +119,12 @@ const SignUpForm = () => {
                         onChange={handleAgeGroupChange}
                         required
                     >
-                        <MenuItem value={"10"}>10대</MenuItem>
-                        <MenuItem value={"20"}>20대</MenuItem>
-                        <MenuItem value={"30"}>30대</MenuItem>
-                        <MenuItem value={"40"}>40대</MenuItem>
-                        <MenuItem value={"50"}>50대</MenuItem>
-                        <MenuItem value={"60"}>60대</MenuItem>
+                        <MenuItem value={"TEENS"}>10대</MenuItem>
+                        <MenuItem value={"TWENTIES"}>20대</MenuItem>
+                        <MenuItem value={"THIRTITES"}>30대</MenuItem>
+                        <MenuItem value={"FORTIES"}>40대</MenuItem>
+                        <MenuItem value={"FIFTIES"}>50대</MenuItem>
+                        <MenuItem value={"SIXTIES"}>60대</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl className="input">
@@ -137,22 +137,22 @@ const SignUpForm = () => {
                         onChange={handleMbtiChange}
                         required
                     >
-                        <MenuItem value={"istj"}>istj</MenuItem>
-                        <MenuItem value={"istp"}>istp</MenuItem>
-                        <MenuItem value={"isfj"}>isfj</MenuItem>
-                        <MenuItem value={"isfp"}>isfp</MenuItem>
-                        <MenuItem value={"infj"}>infj</MenuItem>
-                        <MenuItem value={"infp"}>infp</MenuItem>
-                        <MenuItem value={"intj"}>infp</MenuItem>
-                        <MenuItem value={"intp"}>infp</MenuItem>
-                        <MenuItem value={"estp"}>estp</MenuItem>
-                        <MenuItem value={"esfp"}>esfp</MenuItem>
-                        <MenuItem value={"enfp"}>enfp</MenuItem>
-                        <MenuItem value={"entp"}>entp</MenuItem>
-                        <MenuItem value={"estj"}>estj</MenuItem>
-                        <MenuItem value={"esfj"}>esfj</MenuItem>
-                        <MenuItem value={"entj"}>entj</MenuItem>
-                        <MenuItem value={"enfj"}>enfj</MenuItem>
+                        <MenuItem value={"ISTJ"}>istj</MenuItem>
+                        <MenuItem value={"ISTP"}>istp</MenuItem>
+                        <MenuItem value={"ISFJ"}>isfj</MenuItem>
+                        <MenuItem value={"ISFP"}>isfp</MenuItem>
+                        <MenuItem value={"INFP"}>infp</MenuItem>
+                        <MenuItem value={"INFJ"}>infj</MenuItem>
+                        <MenuItem value={"INTJ"}>intj</MenuItem>
+                        <MenuItem value={"INTP"}>intp</MenuItem>
+                        <MenuItem value={"ESTP"}>estp</MenuItem>
+                        <MenuItem value={"ESFP"}>esfp</MenuItem>
+                        <MenuItem value={"ENFP"}>enfp</MenuItem>
+                        <MenuItem value={"ENTP"}>entp</MenuItem>
+                        <MenuItem value={"ESTJ"}>estj</MenuItem>
+                        <MenuItem value={"ESFJ"}>esfj</MenuItem>
+                        <MenuItem value={"ENTJ"}>entj</MenuItem>
+                        <MenuItem value={"ENFJ"}>enfj</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl className="input">
@@ -181,8 +181,8 @@ const SignUpForm = () => {
                         onChange={handleDepartmentChange}
                         required
                     >
-                        <MenuItem value={"문과"}>문과</MenuItem>
-                        <MenuItem value={"이과"}>이과</MenuItem>
+                        <MenuItem value={"HUMANITIES"}>문과</MenuItem>
+                        <MenuItem value={"SCIENCE"}>이과</MenuItem>
                     </Select>
                 </FormControl>
                 <FormControl className="input">
@@ -195,10 +195,9 @@ const SignUpForm = () => {
                         onChange={handleJobChange}
                         required
                     >
-                        <MenuItem value={"백수"}>백수</MenuItem>
-                        <MenuItem value={"직장인"}>직장인</MenuItem>
-                        <MenuItem value={"공무원"}>공무원</MenuItem>
-                        <MenuItem value={"학생"}>학생</MenuItem>
+                        <MenuItem value={"JOBLESS"}>백수</MenuItem>
+                        <MenuItem value={"EMPLOYEE"}>직장인</MenuItem>
+                        <MenuItem value={"STUDENT"}>학생</MenuItem>
                     </Select>
                     <Button className="input" onClick={submitInfo} color="success" variant="contained">회원가입</Button>
                 </FormControl>

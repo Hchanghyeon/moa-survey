@@ -36,7 +36,7 @@ public class QuestionController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<QuestionResponse> find(@PathVariable("id") Long questionId) {
+    public ResponseEntity<QuestionResponse> findById(@PathVariable("id") Long questionId) {
         QuestionResponse questionsResponse = questionService.findById(questionId);
 
         return ResponseEntity.ok(questionsResponse);
