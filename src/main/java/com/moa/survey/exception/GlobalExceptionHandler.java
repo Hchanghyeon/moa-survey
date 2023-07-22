@@ -1,21 +1,36 @@
 package com.moa.survey.exception;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.moa.survey.exception.dto.ErrorResponse;
 import java.util.NoSuchElementException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(InvalidFormatException.class)
-    public ResponseEntity<ErrorResponse> handleInvalidFormatException(InvalidFormatException ex) {
-        String message = "입력하신 데이터의 형식이 올바르지 않습니다. 올바른 형식으로 입력해주세요.";
-        ErrorResponse errorResponse = new ErrorResponse(message, ex.getMessage(), HttpStatus.BAD_REQUEST);
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidFormatException(MethodArgumentNotValidException ex) {
+        BindingResult bindingResult = ex.getBindingResult();
+
+        StringBuilder builder = new StringBuilder();
+        for (FieldError fieldError : bindingResult.getFieldErrors()) {
+            builder.append("[");
+            builder.append(fieldError.getField());
+            builder.append("](은)는 ");
+            builder.append(fieldError.getDefaultMessage());
+            builder.append(" 입력된 값: [");
+            builder.append(fieldError.getRejectedValue());
+            builder.append("]");
+        }
+
+        ErrorResponse errorResponse = new ErrorResponse(builder.toString(), ex.getMessage(), HttpStatus.BAD_REQUEST);
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(errorResponse);

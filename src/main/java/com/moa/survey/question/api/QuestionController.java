@@ -3,6 +3,7 @@ package com.moa.survey.question.api;
 import com.moa.survey.question.application.QuestionService;
 import com.moa.survey.question.dto.request.QuestionCreateRequest;
 import com.moa.survey.question.dto.response.QuestionResponse;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class QuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<Long> create(@RequestBody QuestionCreateRequest questionCreateRequest, @RequestAttribute String email) {
+    public ResponseEntity<Long> create(@Valid @RequestBody QuestionCreateRequest questionCreateRequest, @RequestAttribute String email) {
         Long questionIdResponse = questionService.create(questionCreateRequest, email);
 
         return ResponseEntity.ok(questionIdResponse);

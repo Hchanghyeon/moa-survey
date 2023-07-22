@@ -3,6 +3,7 @@ package com.moa.survey.answer.api;
 import com.moa.survey.answer.application.AnswerService;
 import com.moa.survey.answer.dto.request.AnswerCreateOrUpdateRequest;
 import com.moa.survey.answer.dto.response.AnswerResponse;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,7 @@ public class AnswerController {
     private final AnswerService answerService;
 
     @PostMapping
-    public ResponseEntity<Long> createOrUpdate(@RequestBody AnswerCreateOrUpdateRequest answerCreateOrUpdateRequest, @RequestAttribute String email) {
+    public ResponseEntity<Long> createOrUpdate(@Valid @RequestBody AnswerCreateOrUpdateRequest answerCreateOrUpdateRequest, @RequestAttribute String email) {
         Long responseAnswerId = answerService.createOrUpdate(answerCreateOrUpdateRequest, email);
         return ResponseEntity.ok(responseAnswerId);
     }

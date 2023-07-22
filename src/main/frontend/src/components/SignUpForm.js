@@ -78,6 +78,11 @@ const SignUpForm = () => {
             })})
             .then(response => response.json())
             .then(data => {
+                if (data.code === "NOT_FOUND" || data.code === "BAD_REQUEST") {
+                    alert(data.message);
+                    return;
+                }
+                
                 if(data.email === email){
                     alert("회원가입이 완료되었습니다.")
                     window.location.href = '/signin';

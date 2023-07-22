@@ -5,6 +5,7 @@ import com.moa.survey.member.auth.TokenResponse;
 import com.moa.survey.member.dto.request.MemberCreateRequest;
 import com.moa.survey.member.dto.request.MemberLoginRequest;
 import com.moa.survey.member.dto.response.MemberResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,14 +21,14 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity<MemberResponse> create(@RequestBody MemberCreateRequest memberCreateRequest) {
+    public ResponseEntity<MemberResponse> create(@Valid @RequestBody MemberCreateRequest memberCreateRequest) {
         MemberResponse memberResponse = memberService.create(memberCreateRequest);
 
         return ResponseEntity.ok(memberResponse);
     }
 
     @PostMapping("/auth")
-    public ResponseEntity<TokenResponse> login(@RequestBody MemberLoginRequest memberLoginRequest) {
+    public ResponseEntity<TokenResponse> login(@Valid @RequestBody MemberLoginRequest memberLoginRequest) {
         TokenResponse tokenResponse = memberService.login(memberLoginRequest);
 
         return ResponseEntity.ok(tokenResponse);
