@@ -118,11 +118,11 @@ const QuestionInfo = () => {
           },
           {
             "name": "남성",
-            "인원수": data.filter((item) => item.memberGender === "남성").length
+            "인원수": data.filter((item) => item.memberGender === "MALE").length
           },
           {
             "name": "여성",
-            "인원수": data.filter((item) => item.memberGender === "여성").length
+            "인원수": data.filter((item) => item.memberGender === "FEMALE").length
           },
         ]
 

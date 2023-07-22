@@ -1,6 +1,12 @@
-package com.moa.survey.answer.application;
+package com.moa.survey.answer.dto.response;
 
 import com.moa.survey.answer.domain.Answer;
+import com.moa.survey.member.domain.AgeGroup;
+import com.moa.survey.member.domain.BloodType;
+import com.moa.survey.member.domain.Department;
+import com.moa.survey.member.domain.Gender;
+import com.moa.survey.member.domain.Job;
+import com.moa.survey.member.domain.Mbti;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,12 +15,12 @@ import lombok.Setter;
 public class AnswerResponse {
 
     private Long answerId;
-    private String memberGender;
-    private int memberAgeGroup;
-    private String memberMbti;
-    private String memberBloodType;
-    private String memberDepartment;
-    private String memberJob;
+    private Gender memberGender;
+    private AgeGroup memberAgeGroup;
+    private Mbti memberMbti;
+    private BloodType memberBloodType;
+    private Department memberDepartment;
+    private Job memberJob;
     private Long itemId;
 
     public AnswerResponse(Answer answer) {
@@ -27,5 +33,5 @@ public class AnswerResponse {
         this.memberJob = answer.getMember().getJob();
         this.itemId = answer.getItem().getItemId();
     }
-    
+
 }

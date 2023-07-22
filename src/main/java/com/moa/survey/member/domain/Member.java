@@ -1,13 +1,12 @@
 package com.moa.survey.member.domain;
 
-import com.moa.survey.question.domain.Question;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,29 +31,32 @@ public class Member {
     @Column(nullable = false, length = 15)
     private String nickname;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private String gender;
+    private Gender gender;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private int ageGroup;
+    private AgeGroup ageGroup;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private String mbti;
+    private Mbti mbti;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 5)
-    private String bloodType;
+    private BloodType bloodType;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 5)
-    private String department;
+    private Department department;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
-    private String job;
-
-    @OneToMany(mappedBy = "member")
-    private List<Question> questionList;
+    private Job job;
 
     @Builder
-    private Member(String email, String password, String nickname, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
+    private Member(String email, String password, String nickname, Gender gender, AgeGroup ageGroup, Mbti mbti, BloodType bloodType, Department department, Job job) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
@@ -65,5 +67,5 @@ public class Member {
         this.department = department;
         this.job = job;
     }
-    
+
 }

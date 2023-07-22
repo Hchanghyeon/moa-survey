@@ -1,8 +1,8 @@
 package com.moa.survey.answer.api;
 
-import com.moa.survey.answer.application.AnswerResponse;
 import com.moa.survey.answer.application.AnswerService;
 import com.moa.survey.answer.dto.request.AnswerCreateOrUpdateRequest;
+import com.moa.survey.answer.dto.response.AnswerResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

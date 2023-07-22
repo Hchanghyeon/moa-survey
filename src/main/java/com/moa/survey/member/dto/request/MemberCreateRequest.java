@@ -1,7 +1,14 @@
 package com.moa.survey.member.dto.request;
 
+import com.moa.survey.member.domain.AgeGroup;
+import com.moa.survey.member.domain.BloodType;
+import com.moa.survey.member.domain.Department;
+import com.moa.survey.member.domain.Gender;
+import com.moa.survey.member.domain.Job;
+import com.moa.survey.member.domain.Mbti;
 import com.moa.survey.member.domain.Member;
 import com.moa.survey.member.util.EncryptionUtil;
+import jakarta.validation.constraints.Email;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,18 +17,19 @@ import lombok.Setter;
 @Getter
 public class MemberCreateRequest {
 
+    @Email
     private String email;
     private String password;
     private String nickname;
-    private String gender;
-    private int ageGroup;
-    private String mbti;
-    private String bloodType;
-    private String department;
-    private String job;
+    private Gender gender;
+    private AgeGroup ageGroup;
+    private Mbti mbti;
+    private BloodType bloodType;
+    private Department department;
+    private Job job;
 
     @Builder
-    private MemberCreateRequest(String email, String password, String nickname, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
+    private MemberCreateRequest(String email, String password, String nickname, Gender gender, AgeGroup ageGroup, Mbti mbti, BloodType bloodType, Department department, Job job) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;

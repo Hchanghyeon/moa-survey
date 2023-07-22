@@ -105,8 +105,8 @@ const SignUpForm = () => {
                         onChange={handleGenderChange}
                         required
                     >
-                        <FormControlLabel value="여성" control={<Radio />} label="여성" />
-                        <FormControlLabel value="남성" control={<Radio />} label="남성" />
+                        <FormControlLabel value="FEMALE" control={<Radio />} label="여성" />
+                        <FormControlLabel value="MALE" control={<Radio />} label="남성" />
                     </RadioGroup>
                 </FormControl>
                 <FormControl className="input">

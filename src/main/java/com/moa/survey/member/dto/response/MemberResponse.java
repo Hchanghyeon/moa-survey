@@ -1,8 +1,12 @@
 package com.moa.survey.member.dto.response;
 
+import com.moa.survey.member.domain.AgeGroup;
+import com.moa.survey.member.domain.BloodType;
+import com.moa.survey.member.domain.Department;
+import com.moa.survey.member.domain.Gender;
+import com.moa.survey.member.domain.Job;
+import com.moa.survey.member.domain.Mbti;
 import com.moa.survey.member.domain.Member;
-import com.moa.survey.question.domain.Question;
-import java.util.List;
 import lombok.Getter;
 
 @Getter
@@ -12,13 +16,12 @@ public class MemberResponse {
     private String email;
     private String password;
     private String nickname;
-    private String gender;
-    private Integer ageGroup;
-    private String mbti;
-    private String bloodType;
-    private String department;
-    private String job;
-    private List<Question> questionList;
+    private Gender gender;
+    private AgeGroup ageGroup;
+    private Mbti mbti;
+    private BloodType bloodType;
+    private Department department;
+    private Job job;
 
     public MemberResponse(Member member) {
         this.memberId = member.getMemberId();
@@ -31,7 +34,6 @@ public class MemberResponse {
         this.bloodType = member.getBloodType();
         this.department = member.getDepartment();
         this.job = member.getJob();
-        this.questionList = member.getQuestionList();
     }
-    
+
 }

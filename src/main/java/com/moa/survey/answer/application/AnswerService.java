@@ -3,6 +3,7 @@ package com.moa.survey.answer.application;
 import com.moa.survey.answer.domain.Answer;
 import com.moa.survey.answer.domain.AnswerRepository;
 import com.moa.survey.answer.dto.request.AnswerCreateOrUpdateRequest;
+import com.moa.survey.answer.dto.response.AnswerResponse;
 import com.moa.survey.item.domain.Item;
 import com.moa.survey.item.repository.ItemRepository;
 import com.moa.survey.member.domain.Member;
