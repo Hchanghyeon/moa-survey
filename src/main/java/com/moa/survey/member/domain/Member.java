@@ -65,19 +65,5 @@ public class Member {
         this.department = department;
         this.job = job;
     }
-
-    @Builder
-    private Member(Long memberId, String email, String password, String nickname, String gender, int ageGroup, String mbti, String bloodType, String department, String job) {
-        this.memberId = memberId;
-        this.email = email;
-        this.password = password;
-        this.nickname = nickname;
-        this.gender = gender;
-        this.ageGroup = ageGroup;
-        this.mbti = mbti;
-        this.bloodType = bloodType;
-        this.department = department;
-        this.job = job;
-    }
-
+    
 }

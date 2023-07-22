@@ -13,7 +13,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -37,17 +36,9 @@ public class Question {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Builder
-    private Question(Long questionId, String title, List<Item> items, Member member) {
-        this.questionId = questionId;
-        this.title = title;
-        this.items = items;
-        this.member = member;
-    }
-
     public Question(String title, Member member) {
         this.title = title;
         this.member = member;
     }
-    
+
 }

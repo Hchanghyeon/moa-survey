@@ -21,7 +21,6 @@ public class TokenProvider {
         this.validityInMilliseconds = validityInMilliseconds;
     }
 
-    //토큰생성
     public String createToken(String subject) {
         Claims claims = Jwts.claims().setSubject(subject);
 
@@ -38,12 +37,10 @@ public class TokenProvider {
                 .compact();
     }
 
-    //토큰에서 값 추출
     public String getSubject(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 
-    //유효한 토큰인지 확인
     public boolean validateToken(String token) {
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
@@ -56,5 +53,5 @@ public class TokenProvider {
             return false;
         }
     }
-    
+
 }

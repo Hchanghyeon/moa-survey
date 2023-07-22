@@ -11,7 +11,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,13 +31,6 @@ public class Item {
     @JoinColumn(name = "question_id")
     @JsonIgnore
     private Question question;
-
-    @Builder
-    private Item(Long itemId, String text, Question question) {
-        this.itemId = itemId;
-        this.text = text;
-        this.question = question;
-    }
 
     public Item(String text, Question question) {
         this.text = text;
