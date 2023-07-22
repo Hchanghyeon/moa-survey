@@ -26,6 +26,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(bearerAuthInterceptor)
                 .addPathPatterns("/api/questions")
+                .addPathPatterns("/api/questions/*")
                 .addPathPatterns("/api/answers")
                 .addPathPatterns("/api/member/auth");
     }

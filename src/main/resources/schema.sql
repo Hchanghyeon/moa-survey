@@ -24,6 +24,7 @@ create table question
     title       varchar(100) not null,
     member_id bigint null,
     constraint FK1nuuke7olg7b9fkyp2ba9d5bx foreign key (member_id) references moasurvey.member (member_id)
+    on delete cascade
 );
 
 create table item
@@ -32,6 +33,7 @@ create table item
     text        varchar(100) not null,
     question_id bigint null,
     constraint FKthpx9igo9itj557224y4g7glw foreign key (question_id) references moasurvey.question (question_id)
+    on delete cascade
 );
 
 create table answer
@@ -39,8 +41,10 @@ create table answer
     answer_id bigint auto_increment primary key,
     member_id bigint not null unique,
     item_id   bigint not null,
-    constraint FKmd5my8n6cqajta2wolky3v1x0 foreign key (item_id) references moasurvey.item (item_id),
+    constraint FKmd5my8n6cqajta2wolky3v1x0 foreign key (item_id) references moasurvey.item (item_id)
+    on delete cascade,
     constraint FKn2sp5pa6h0u2kixjl2r4vfluf foreign key (member_id) references moasurvey.member (member_id)
+    on delete cascade
 );
 
 

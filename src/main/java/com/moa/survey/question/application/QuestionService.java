@@ -54,4 +54,20 @@ public class QuestionService {
         return new QuestionResponse(question);
     }
 
+    @Transactional
+    public void deleteById(Long questionId, String email) {
+        Member member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new NoSuchElementException("로그인된 이메일은 없는 이메일입니다."));
+
+        Question question = questionRepository.findById(questionId)
+                .orElseThrow(() -> new NoSuchElementException("찾는 질문이 없습니다."));
+
+        if (member.getMemberId().equals(question.getMember().getMemberId())) {
+            questionRepository.deleteById(questionId);
+            return;
+        }
+
+        throw new IllegalArgumentException("질문을 작성한 유저와 삭제하려는 유저가 일치하지 않습니다.");
+    }
+
 }

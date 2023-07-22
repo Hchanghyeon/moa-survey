@@ -6,6 +6,7 @@ import com.moa.survey.question.dto.response.QuestionResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,13 @@ public class QuestionController {
         QuestionResponse questionsResponse = questionService.findById(questionId);
 
         return ResponseEntity.ok(questionsResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") Long questionId, @RequestAttribute String email) {
+        questionService.deleteById(questionId, email);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

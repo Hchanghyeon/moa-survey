@@ -30,7 +30,6 @@ public class GlobalExceptionHandler {
                 .body(errorResponse);
     }
 
-
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ErrorResponse> handleNoSuchElementException(NoSuchElementException ex) {
         String message = "찾는 데이터가 없습니다. 다시 한 번 확인해주세요.";

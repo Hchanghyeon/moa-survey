@@ -37,6 +37,8 @@ function BpRadio(props) {
 
 
 
+
+
 const QuestionInfo = () => {
   const [question, setQuestion] = useState({});
   const [items, setItems] = useState([]);
@@ -49,12 +51,26 @@ const QuestionInfo = () => {
   const [bloodTypeGroupData, setBloodTypeGroupData] = useState([]);
   const [departmentGroupData, setDepartmentGroupData] = useState([]);
   const [jobGroupData, setJobtGroupData] = useState([]);
-  const { authInfo, updateAuthInfo } = useContext(AuthContext);
+  const { authInfo } = useContext(AuthContext);
 
   const handleChange = (event) => {
     setValue(event.target.value);
     saveAnswer(event.target.value);
   };
+
+  const submitDeleteQuestion = async () => {
+
+    await fetch(`http://localhost:8080/api/questions/${questionId.id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": 'application/json; charset=utf-8;',
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      },
+    })
+      .then(() => {
+        window.location.href="/"
+      })
+  }
 
   const getQuestion = async () => {
     await fetch(`http://localhost:8080/api/questions/${questionId.id}`, {
@@ -294,8 +310,6 @@ const QuestionInfo = () => {
       })
 
 
-
-
   }
 
   useEffect(() => {
@@ -329,6 +343,16 @@ const QuestionInfo = () => {
         <FormWriter>
           <span>작성자</span><b> {question.memberNickname}</b>
         </FormWriter>
+        {
+          authInfo.userName === question.memberNickname ?         <FormWriter>
+          <button onClick={submitDeleteQuestion}>
+            삭제
+          </button>
+          </FormWriter> : null
+
+        }
+
+
         </div>
 
         <div className="attention">익명은 선택 정보가 반영되지 않습니다. </div>

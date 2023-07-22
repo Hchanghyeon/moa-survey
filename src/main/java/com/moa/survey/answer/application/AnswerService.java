@@ -36,8 +36,8 @@ public class AnswerService {
 
         if (findAnswer.isEmpty()) {
             Answer answer = new Answer(member, item);
-
             Answer savedAnswer = answerRepository.save(answer);
+
             return savedAnswer.getAnswerId();
         }
 
@@ -59,5 +59,5 @@ public class AnswerService {
                 .map(AnswerResponse::new)
                 .toList();
     }
-    
+
 }
