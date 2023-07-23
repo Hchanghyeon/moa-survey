@@ -6,8 +6,7 @@
   - Spring Web
   - Spring Data JPA
   - Lombok
-  - Spring Rest Docs
 - **FrontEnd** : React
-- **Database** : MySQL 8.0.32, H2
+- **Database** : MySQL 8.0.32
 
 
