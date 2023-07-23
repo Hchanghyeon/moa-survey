@@ -8,12 +8,12 @@ import com.moa.survey.item.domain.Item;
 import com.moa.survey.item.repository.ItemRepository;
 import com.moa.survey.member.domain.Member;
 import com.moa.survey.member.domain.MemberRepository;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
@@ -28,27 +28,31 @@ public class AnswerService {
 
         Member member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new NoSuchElementException("찾는 유저가 없습니다."));
-
+        
         Item item = itemRepository.findById(answerCreateOrUpdateRequest.getItemId())
                 .orElseThrow(() -> new NoSuchElementException("찾는 질문의 문항이 없습니다."));
 
-        Optional<Answer> findAnswer = answerRepository.findByMember(member);
+        List<Answer> findAnswer = answerRepository.findByMember(member);
 
-        if (findAnswer.isEmpty()) {
+        List<Answer> filteredAnswer = findAnswer.stream()
+                .filter((answer) -> answer.getItem().getQuestion().getQuestionId().equals(item.getQuestion().getQuestionId()))
+                .toList();
+
+        if (filteredAnswer.isEmpty()) {
             Answer answer = Answer.builder()
                     .member(member)
                     .item(item)
                     .build();
-            
+
             Answer savedAnswer = answerRepository.save(answer);
 
             return savedAnswer.getAnswerId();
         }
 
-        findAnswer.get().changeMember(member);
-        findAnswer.get().changeItem(item);
+        filteredAnswer.get(0).changeMember(member);
+        filteredAnswer.get(0).changeItem(item);
 
-        return findAnswer.get().getAnswerId();
+        return findAnswer.get(0).getAnswerId();
     }
 
     @Transactional(readOnly = true)

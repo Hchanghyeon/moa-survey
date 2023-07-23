@@ -38,9 +38,10 @@ create table item
 
 create table answer
 (
-    answer_id bigint auto_increment primary key,
-    member_id bigint not null unique,
+    answer_id bigint auto_increment,
+    member_id bigint not null,
     item_id   bigint not null,
+    CONSTRAINT answer_memberPK primary key (answer_id, member_id),
     constraint FKmd5my8n6cqajta2wolky3v1x0 foreign key (item_id) references moasurvey.item (item_id)
     on delete cascade,
     constraint FKn2sp5pa6h0u2kixjl2r4vfluf foreign key (member_id) references moasurvey.member (member_id)
